@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>專注高效：情境混合器（本機音源版）</title>
     <link rel="stylesheet" href="style.css" />
+
+    <script>
+      // 1. 定義您的 GA 評估 ID
+      const GA_TRACKING_ID = 'G-Y4JL4F1VL8'; 
+
+      // 2. 檢查是否在部署環境 (https)
+      // 這是確保本地 (file://) 追蹤被跳過的關鍵
+      const isDeployed = window.location.protocol === 'https:' || window.location.hostname === 'localhost';
+
+      if (GA_TRACKING_ID && isDeployed) {
+        // 載入 Google Analytics 追蹤腳本
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // 啟動追蹤配置
+        gtag('config', GA_TRACKING_ID);
+      } else {
+        // 如果在非部署環境，創建一個虛擬的 gtag 函數，避免 script.js 報錯
+        window.gtag = function() {};
+      }
+    </script>
   </head>
   <body>
     <div id="background-container" aria-hidden="true">
