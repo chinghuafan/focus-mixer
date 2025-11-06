@@ -1,0 +1,11 @@
+# 排除 macOS 系統文件
+.DS_Store
+
+# 排除 Windows 縮圖快取
+Thumbs.db
+
+# 排除任何本機開發/測試相關文件（如果未來可能用到）
+/node_modules
+/dist
+*.log
+

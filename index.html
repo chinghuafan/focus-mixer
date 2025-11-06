@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>專注高效：情境混合器（本機音源版）</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="background-container" aria-hidden="true">
+        <!-- ✅ 影片背景：webm -->
+        <video id="background-video" autoplay muted loop playsinline style="display:none">
+            <source src="" type="video/webm" />
+        </video>
+        <img id="current-scene" src="" alt="專注情境背景" />
+    </div>
+
+    <!-- 咖啡煙霧粒子（僅在咖啡場景顯示） -->
+    <div id="coffee-steam-1" class="coffee-steam-particle" aria-hidden="true"></div>
+    <div id="coffee-steam-2" class="coffee-steam-particle" aria-hidden="true"></div>
+    <div id="coffee-steam-3" class="coffee-steam-particle" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
+
+    <div class="content">
+      <div id="clock" class="info-block" aria-live="polite"></div>
+
+      <div id="timer" class="info-block" aria-live="polite">
+        <div class="control-group timer-select-group">
+          <label for="focus-duration-select">專注時長：</label>
+          <select id="focus-duration-select"></select>
+        </div>
+        <span id="timer-display">25:00</span>
+        <div class="timer-controls">
+          <button id="start-timer" type="button">開始專注</button>
+          <button id="reset-timer" type="button" disabled>重設</button>
+        </div>
+      </div>
+
+      <div class="controls-panel" role="group" aria-label="情境混合">
+        <h3>情境混合</h3>
+
+        <div class="control-group">
+          <label for="scene-select">背景情境：</label>
+          <select id="scene-select"></select>
+        </div>
+
+        <div class="control-group">
+          <label for="sound-select">背景音樂：</label>
+          <select id="sound-select"></select>
+          <div class="volume-control">
+            <label for="volume-range">音量:</label>
+            <input id="volume-range" type="range" min="0" max="100" step="1" value="50" />
+          </div>
+        </div>
+
+        <button id="toggle-play" type="button">啟動/暫停音樂</button>
+      </div>
+
+      <div class="branding">
+        <p>正在專注？了解我們的品牌服務！</p>
+      </div>
+    </div>
+
+    <!-- ✅ 本機音源播放器（隱藏即可） -->
+    <audio id="local-audio" preload="auto" loop aria-hidden="true"></audio>
+
+    <!-- ❌ 已移除：YouTube 播放容器與 Iframe API -->
+    <script src="script.js"></script>
+  </body>
+</html>
